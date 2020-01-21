@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{6da94579-78f8-43f5-86ee-0521b2e064a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Features">
+      <UniqueIdentifier>{4c5272fa-973d-4137-8eb2-8f8eb892ec34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Features\TriggerBot">
+      <UniqueIdentifier>{d0b6db2a-95fe-455f-acf2-ed0018cfa4b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Features\NoFlash">
+      <UniqueIdentifier>{56c5945e-b047-470c-9514-e608b2795358}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Features\Glow">
+      <UniqueIdentifier>{ad22ae65-c8e3-4b3f-8357-f71c8f5476a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Features\ESP">
+      <UniqueIdentifier>{cc125865-6596-4048-8483-33f4a27f4360}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Features\Bunny Hop">
+      <UniqueIdentifier>{c60584d6-adde-4838-abc7-6402f8017107}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EntityBase">
+      <UniqueIdentifier>{5231cf16-56e1-4ee2-b35d-1451ab0fb642}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Settings">
+      <UniqueIdentifier>{7f288beb-e5d0-4cd3-9ec8-4c4c734463d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ProcMan">
+      <UniqueIdentifier>{340976ce-9756-44dc-af81-11344e051339}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game">
+      <UniqueIdentifier>{2340950c-cdec-4030-9b21-1493ed9ce080}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CSGO_ExternalTrainer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BunnyHop.cpp">
+      <Filter>Features\Bunny Hop</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NoFlash.cpp">
+      <Filter>Features\NoFlash</Filter>
+    </ClCompile>
+    <ClCompile Include="triggerBot.cpp">
+      <Filter>Features\TriggerBot</Filter>
+    </ClCompile>
+    <ClCompile Include="Glow.cpp">
+      <Filter>Features\Glow</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityBase.cpp">
+      <Filter>EntityBase</Filter>
+    </ClCompile>
+    <ClCompile Include="Settings.cpp">
+      <Filter>Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcMan.cpp">
+      <Filter>ProcMan</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="csgo.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BunnyHop.h">
+      <Filter>Features\Bunny Hop</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NoFlash.h">
+      <Filter>Features\NoFlash</Filter>
+    </ClInclude>
+    <ClInclude Include="triggerBot.h">
+      <Filter>Features\TriggerBot</Filter>
+    </ClInclude>
+    <ClInclude Include="Glow.h">
+      <Filter>Features\Glow</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityBase.h">
+      <Filter>EntityBase</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcMan.h">
+      <Filter>ProcMan</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CSGO_ExternalTrainer.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\icon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
