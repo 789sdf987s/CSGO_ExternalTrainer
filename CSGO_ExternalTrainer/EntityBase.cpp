@@ -55,7 +55,7 @@ bool EntityBase::IsDormant(uintptr_t const entityIndex) const
 
 bool EntityBase::IsSpotted(uintptr_t const entityIndex) const
 {
-	auto spotted = readMem<bool>(entityIndex + m_bSpotted);
+	auto const spotted = readMem<bool>(entityIndex + m_bSpotted);
 	return spotted;
 }
 

@@ -78,6 +78,9 @@
     <ClCompile Include="game.cpp">
       <Filter>game</Filter>
     </ClCompile>
+    <ClCompile Include="ESP.cpp">
+      <Filter>Features\ESP</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="csgo.hpp">
@@ -112,6 +115,9 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ESP.h">
+      <Filter>Features\ESP</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

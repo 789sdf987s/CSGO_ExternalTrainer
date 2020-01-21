@@ -8,6 +8,7 @@
 #include "NoFlash.h"
 #include "triggerBot.h"
 #include "Glow.h"
+#include "ESP.h"
 
 using namespace hazedumper::netvars;
 using namespace hazedumper::signatures;
@@ -30,6 +31,12 @@ int main()
 	// Getting glowObjMan to use glow later
 	game.glowObjMan = readMem<uintptr_t>(game.client + dwGlowObjectManager);
 
+	// Getting the game window to later draw on top using the ESP
+	GetWindowRect(FindWindow(nullptr, L"Counter-Strike: Global Offensive"), &game.m_Rect);
+
+	// Setup to ESP (draw on top of the game window)
+	setup();
+	
 	// Infinite main loop unless insert (Panic key) is pressed
 	while (!GetAsyncKeyState(VK_INSERT))
 	{
@@ -57,17 +64,35 @@ int main()
 				resetBrightness();
 			}
 		}
+
+		// Check if ESP is turned on/off
+		if (GetAsyncKeyState(VK_F7) & 1)
+		{
+			settings.espStatus = !settings.espStatus;
+		}
+
+
+
 		
 		// Check if player is in game
 		if (game.ClocalPlayer != NULL && entity.IsInGame())
 		{
-			if (settings.glowStatus)
+			if (settings.glowStatus || settings.espStatus)
 			{
 				for (auto i = 0; i < 32; i++)
 				{
-					handleGlow(i);
+					if (settings.glowStatus)
+					{
+						handleGlow(i);
+					}
+					if (settings.espStatus)
+					{
+						ReadProcessMemory(game.hProcess, PBYTE(game.client + dwViewMatrix), &game.world_to_screen_matrix, sizeof(game.world_to_screen_matrix), 0);
+						handleESP(i, game.world_to_screen_matrix);
+					}
 				}
 			}
+
 
 			// Check if player is alive
 			if (entity.IsAlive(game.ClocalPlayer))
@@ -81,6 +106,5 @@ int main()
 				}
 			}
 		}
-		Sleep(1);
 	}
 }
