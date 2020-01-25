@@ -46,6 +46,9 @@
     <Filter Include="game">
       <UniqueIdentifier>{2340950c-cdec-4030-9b21-1493ed9ce080}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Features\RankReveal">
+      <UniqueIdentifier>{2dbc1cba-055e-445d-af90-8684400da195}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CSGO_ExternalTrainer.cpp">
@@ -80,6 +83,9 @@
     </ClCompile>
     <ClCompile Include="ESP.cpp">
       <Filter>Features\ESP</Filter>
+    </ClCompile>
+    <ClCompile Include="RankReveal.cpp">
+      <Filter>Features\RankReveal</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +124,9 @@
     </ClInclude>
     <ClInclude Include="ESP.h">
       <Filter>Features\ESP</Filter>
+    </ClInclude>
+    <ClInclude Include="RankReveal.h">
+      <Filter>Features\RankReveal</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

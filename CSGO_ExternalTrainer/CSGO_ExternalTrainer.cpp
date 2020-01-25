@@ -9,6 +9,7 @@
 #include "triggerBot.h"
 #include "Glow.h"
 #include "ESP.h"
+#include "RankReveal.h"
 
 using namespace hazedumper::netvars;
 using namespace hazedumper::signatures;
@@ -71,6 +72,11 @@ int main()
 			settings.espStatus = !settings.espStatus;
 		}
 
+		// Check if rank reveal is pressed
+		if (GetAsyncKeyState(VK_END) & 1)
+		{
+			handleRankReveal();
+		}
 
 
 		

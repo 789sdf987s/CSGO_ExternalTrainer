@@ -18,6 +18,7 @@ public:
 	bool IsSpotted(uintptr_t const entityIndex) const;
 	bool IsEnemy(uintptr_t const entityIndex1, uintptr_t const entityIndex2) const;
 	bool isInvulnerable(uintptr_t const entityIndex) const;
+	bool isScoped(uintptr_t const entityIndex) const;
 	float GetFlashDuration(uintptr_t const entityIndex) const;
 };
 
