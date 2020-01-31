@@ -72,6 +72,11 @@ bool EntityBase::isInvulnerable(uintptr_t const entityIndex) const
 	return invulnerable;
 }
 
+bool EntityBase::isScoped(uintptr_t const entityIndex) const
+{
+	auto const scoped = readMem<bool>(entityIndex + m_bIsScoped);
+	return scoped;
+}
 
 float EntityBase::GetFlashDuration(uintptr_t const entityIndex) const
 {

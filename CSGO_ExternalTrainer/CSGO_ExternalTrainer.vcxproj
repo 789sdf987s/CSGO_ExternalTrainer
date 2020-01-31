@@ -153,6 +153,7 @@
     <ClCompile Include="NoFlash.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="ProcMan.cpp" />
+    <ClCompile Include="RankReveal.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -169,6 +170,7 @@
     <ClInclude Include="NoFlash.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="ProcMan.h" />
+    <ClInclude Include="RankReveal.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="stdafx.h" />

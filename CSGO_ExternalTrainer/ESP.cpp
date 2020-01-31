@@ -64,15 +64,17 @@ void drawString(int const x, int const y, COLORREF const color, const char* text
 	DeleteObject(font);
 }
 
-void drawESP(float const x, float const y, float const distance, const char* gun, RECT const rect)
+void drawESP(float const x, float const y, float const distance, const char* gun, bool isScoped, RECT const rect)
 {
 	//ESP RECTANGLE
 	auto const width = 18100 / distance;
 	auto const height = 37500 / distance;
 	drawBorderBox(x - (width / 2), y - height, width, height, 1);
 
+	// ESP line from bottom of the screen to enemies
 	drawLine((rect.right - rect.left) / 2, rect.bottom - rect.top, x, y, snapLineColor);
 
+	// ESP Text
 	std::stringstream ss;
 	ss << int(distance);
 
@@ -88,17 +90,30 @@ void drawESP(float const x, float const y, float const distance, const char* gun
 	drawString(x, y, textColor, distanceInfo);
 	drawString(x, y + 30, textColor, gunInfo);
 
+	if (isScoped)
+	{
+		std::stringstream ss3;
+		ss3 << (const char*)"SCOPED";
+		auto const scopedInfo = new char[ss3.str().size() + 1];
+		strcpy(scopedInfo, ss3.str().c_str());
+
+		drawString(x, y + 60, textColor, scopedInfo);
+		
+		delete[] scopedInfo;
+	}
+	
 	delete[] distanceInfo;
 	delete[] gunInfo;
 }
 
+// Converting weaponID -> Weapon name
 const char* getWeaponName(short int const weaponID)
 {
 	const char* weapon;
 	switch (weaponID)
 	{
 	case 1:
-		weapon = "DEagle";
+		weapon = "Deagle";
 		break;
 	case 2:
 		weapon = "Dualies";
@@ -270,6 +285,7 @@ float Get3dDistance(float* myCoords, float* enemyCoords)
 
 }
 
+// Setup to draw on top of the screen
 void setup()
 {
 	hwndCSGO = FindWindowA(nullptr, "Counter-Strike: Global Offensive");
@@ -295,7 +311,7 @@ void handleESP(int const i, WorldToScreenMatrix_t WtSMatrix)
 	auto const weaponBase = readMem<int>(game.client + dwEntityList + (weaponIndex - 1) * 0x10);
 	auto const weaponID = readMem<short>(weaponBase + m_iItemDefinitionIndex);
 	auto const weapon = getWeaponName(weaponID);
-
+	
 	float enemyXY[3];
 
 	float entityPosition[3];
@@ -306,6 +322,6 @@ void handleESP(int const i, WorldToScreenMatrix_t WtSMatrix)
 	
 	if (WorldToScreen(entityPosition, enemyXY, game.m_Rect, WtSMatrix))
 	{
-		drawESP(enemyXY[0] - game.m_Rect.left, enemyXY[1] - game.m_Rect.top, Get3dDistance(myPosition, entityPosition), weapon, game.m_Rect);
+		drawESP(enemyXY[0] - game.m_Rect.left, enemyXY[1] - game.m_Rect.top, Get3dDistance(myPosition, entityPosition), weapon, entity.isScoped(entityIndex), game.m_Rect);
 	}
 }
