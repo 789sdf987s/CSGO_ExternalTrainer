@@ -5,9 +5,10 @@
 using namespace hazedumper::netvars;
 using namespace hazedumper::signatures;
 
-auto newFlashDuration = 0;
+constexpr auto newFlashDuration = 0;
 
 void handleNoFlash()
 {
+	// constantly writing 0 to the localPlayer flash duration
 	writeMem<int>(game.ClocalPlayer + m_flFlashDuration, newFlashDuration);
 }

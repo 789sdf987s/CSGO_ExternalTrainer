@@ -8,6 +8,8 @@
 #include "NoFlash.h"
 #include "triggerBot.h"
 #include "Glow.h"
+#include "ESP.h"
+#include "RankReveal.h"
 
 using namespace hazedumper::netvars;
 using namespace hazedumper::signatures;
@@ -27,14 +29,19 @@ int main()
 	// Getting pointer for ClientState. It's used to read ClientState_State (in-game check)
 	game.ClientState = readMem<uintptr_t>(game.engine + dwClientState);
 
-	// Getting glowObjMan to use glow later
-	game.glowObjMan = readMem<uintptr_t>(game.client + dwGlowObjectManager);
-
+	// Setup to ESP (draw on top of the game window)
+	setup();
+	// Getting the game window to later draw on top using the ESP
+	GetWindowRect(FindWindow(nullptr, L"Counter-Strike: Global Offensive"), &game.m_Rect);
+	
 	// Infinite main loop unless insert (Panic key) is pressed
 	while (!GetAsyncKeyState(VK_INSERT))
 	{
 		// Reading Local Player
 		game.ClocalPlayer = readMem<uintptr_t>(game.client + dwLocalPlayer);
+
+		// Getting glowObjMan to use glow later
+		game.glowObjMan = readMem<uintptr_t>(game.client + dwGlowObjectManager);
 
 		// Check if noFlash is turned on/off
 		if (GetAsyncKeyState(VK_F5) & 1)
@@ -57,17 +64,40 @@ int main()
 				resetBrightness();
 			}
 		}
+
+		// Check if ESP is turned on/off
+		if (GetAsyncKeyState(VK_F7) & 1)
+		{
+			settings.espStatus = !settings.espStatus;
+		}
+
+		// Check if rank reveal is pressed
+		if (GetAsyncKeyState(VK_END) & 1)
+		{
+			handleRankReveal();
+		}
+
+
 		
 		// Check if player is in game
 		if (game.ClocalPlayer != NULL && entity.IsInGame())
 		{
-			if (settings.glowStatus)
+			if (settings.glowStatus || settings.espStatus)
 			{
 				for (auto i = 0; i < 32; i++)
 				{
-					handleGlow(i);
+					if (settings.glowStatus)
+					{
+						handleGlow(i);
+					}
+					if (settings.espStatus)
+					{
+						ReadProcessMemory(game.hProcess, PBYTE(game.client + dwViewMatrix), &game.world_to_screen_matrix, sizeof(game.world_to_screen_matrix), 0);
+						handleESP(i, game.world_to_screen_matrix);
+					}
 				}
 			}
+
 
 			// Check if player is alive
 			if (entity.IsAlive(game.ClocalPlayer))
@@ -81,6 +111,5 @@ int main()
 				}
 			}
 		}
-		Sleep(1);
 	}
 }

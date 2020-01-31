@@ -55,7 +55,7 @@ bool EntityBase::IsDormant(uintptr_t const entityIndex) const
 
 bool EntityBase::IsSpotted(uintptr_t const entityIndex) const
 {
-	auto spotted = readMem<bool>(entityIndex + m_bSpotted);
+	auto const spotted = readMem<bool>(entityIndex + m_bSpotted);
 	return spotted;
 }
 
@@ -72,6 +72,11 @@ bool EntityBase::isInvulnerable(uintptr_t const entityIndex) const
 	return invulnerable;
 }
 
+bool EntityBase::isScoped(uintptr_t const entityIndex) const
+{
+	auto const scoped = readMem<bool>(entityIndex + m_bIsScoped);
+	return scoped;
+}
 
 float EntityBase::GetFlashDuration(uintptr_t const entityIndex) const
 {

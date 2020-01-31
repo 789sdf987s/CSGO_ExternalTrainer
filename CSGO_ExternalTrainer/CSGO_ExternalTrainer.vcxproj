@@ -87,7 +87,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -111,13 +111,12 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -149,10 +148,12 @@
     <ClCompile Include="BunnyHop.cpp" />
     <ClCompile Include="CSGO_ExternalTrainer.cpp" />
     <ClCompile Include="EntityBase.cpp" />
+    <ClCompile Include="ESP.cpp" />
     <ClCompile Include="Glow.cpp" />
     <ClCompile Include="NoFlash.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="ProcMan.cpp" />
+    <ClCompile Include="RankReveal.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -164,10 +165,12 @@
     <ClInclude Include="BunnyHop.h" />
     <ClInclude Include="csgo.hpp" />
     <ClInclude Include="EntityBase.h" />
+    <ClInclude Include="ESP.h" />
     <ClInclude Include="Glow.h" />
     <ClInclude Include="NoFlash.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="ProcMan.h" />
+    <ClInclude Include="RankReveal.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="stdafx.h" />

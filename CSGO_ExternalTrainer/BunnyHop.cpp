@@ -8,10 +8,11 @@ using namespace hazedumper::signatures;
 
 constexpr auto KeyDown = -32768;
 constexpr auto KeyUp = 0;
+constexpr auto forceJump = 6;
 
 bool isSpaceHeld = false;
-int forceJump = 6;
 
+// Checking if bunnyhop is on/off
 void getBunnyHopStatus()
 {
 	if (GetAsyncKeyState(VK_SPACE) == KeyDown && !isSpaceHeld)
@@ -33,6 +34,7 @@ void handleBHop()
 	{
 		// Get localPlayer velocity
 		auto const playerVelocity = entity.GetVelocity(game.ClocalPlayer);
+		// Check if the player is moving on the X, Y coords, but not moving on the z coords (on the ground)
 		if (playerVelocity.x != 0 && playerVelocity.y != 0 && playerVelocity.z == 0 && settings.bhopStatus)
 		{
 			writeMem(game.client + dwForceJump, forceJump);
