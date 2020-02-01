@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -152,6 +152,7 @@
     <ClCompile Include="Glow.cpp" />
     <ClCompile Include="NoFlash.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="Output.cpp" />
     <ClCompile Include="ProcMan.cpp" />
     <ClCompile Include="RankReveal.cpp" />
     <ClCompile Include="Settings.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="Glow.h" />
     <ClInclude Include="NoFlash.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="Output.h" />
     <ClInclude Include="ProcMan.h" />
     <ClInclude Include="RankReveal.h" />
     <ClInclude Include="resource.h" />
