@@ -5,22 +5,22 @@
 class Colors
 {
 public:
-	void changeToBlue()
+	static void changeToBlue()
 	{
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 	}
 
-	void changeToWhite()
+	static void changeToWhite()
 	{
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 	}
 
-	void changeToRed()
+	static void changeToRed()
 	{
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
 	}
 
-	void changeToGreen()
+	static void changeToGreen()
 	{
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
 	}
@@ -30,6 +30,7 @@ public:
 
 void handleOutput()
 {
+	system("cls");
 	// Title
 	colors.changeToBlue();
 	std::cout << "CSGO External Trainer V3 \n";
@@ -84,4 +85,7 @@ void handleOutput()
 		std::cout << "OFF \n";
 	}
 
+	// Exit
+	colors.changeToWhite();
+	std::cout << "[INSERT] Exit \n";
 }

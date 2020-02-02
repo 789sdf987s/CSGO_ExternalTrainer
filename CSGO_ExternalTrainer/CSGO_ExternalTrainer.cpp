@@ -10,6 +10,7 @@
 #include "Glow.h"
 #include "ESP.h"
 #include "RankReveal.h"
+#include "Output.h"
 
 using namespace hazedumper::netvars;
 using namespace hazedumper::signatures;
@@ -33,6 +34,9 @@ int main()
 	setup();
 	// Getting the game window to later draw on top using the ESP
 	GetWindowRect(FindWindow(nullptr, L"Counter-Strike: Global Offensive"), &game.m_Rect);
+
+	// Show menu on the screen
+	handleOutput();
 	
 	// Infinite main loop unless insert (Panic key) is pressed
 	while (!GetAsyncKeyState(VK_INSERT))
@@ -47,12 +51,14 @@ int main()
 		if (GetAsyncKeyState(VK_F5) & 1)
 		{
 			settings.noFlashStatus = !settings.noFlashStatus;
+			handleOutput();
 		}
 
 		// Checking if glow is turned on/off
 		if (GetAsyncKeyState(VK_F6) & 1)
 		{
 			settings.glowStatus = !settings.glowStatus;
+			handleOutput();
 			if (settings.glowStatus)
 			{
 				setColor();
@@ -69,12 +75,14 @@ int main()
 		if (GetAsyncKeyState(VK_F7) & 1)
 		{
 			settings.espStatus = !settings.espStatus;
+			handleOutput();
 		}
 
 		// Check if rank reveal is pressed
 		if (GetAsyncKeyState(VK_END) & 1)
 		{
 			handleRankReveal();
+			handleOutput();
 		}
 
 
